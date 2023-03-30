@@ -1,0 +1,38 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Untitled Document</title>
+</head>
+
+<body>
+<form id="form1" name="form1" method="post" action="uadd and manage case1">
+  <table  border="1">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Date and Time </th>
+      <th scope="col">Case</th>
+      <th scope="col">Description</th>
+      <th scope="col">&nbsp;</th>
+    </tr>
+    {% for i in val %}
+    <tr>
+      <td>{{loop.index}}</td>
+      <td>{{i['date_and_time']}}</td>
+      <td>{{i['case']}}</td>
+      <td>{{i['description']}}</td>
+      <td><p><a href="edit_case?id={{i['case_id']}}">Edit</a></p>
+      <p><a href="delete_case?id={{i['case_id']}}" onclick="return confirm('Are you sure you want to delete this item?');">Delete</a></p></td>
+    </tr>
+    {% endfor %}
+    <tr>
+      <td colspan="5"><label>
+        <div align="center">
+          <input type="submit" name="Submit" value="Add" />
+          </div>
+      </label></td>
+    </tr>
+  </table>
+</form>
+</body>
+</html>

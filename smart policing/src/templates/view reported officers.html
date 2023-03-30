@@ -1,0 +1,38 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Untitled Document</title>
+</head>
+
+<body>
+<form id="form1" name="form1" method="post" action="view reported officers">
+  <table width="200" border="1">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Officer name </th>
+      <th scope="col">Position</th>
+      <th scope="col">Department</th>
+      <th scope="col">Station</th>
+      <th scope="col">&nbsp;</th>
+      <th scope="col">&nbsp;</th>
+    </tr>
+    {% for i in val %}
+    <tr>
+      <td>{{loop.index}}</td>
+      <td>{{i['name']}}</td>
+      <td>{{i['position']}}</td>
+      <td>{{i['department']}}</td>
+      <td>{{i['station']}}</td>
+      {% if i['Type']=='officer' %}
+      <td><a href="block?id={{i['user_id']}}">Block</a></td>
+      {% elif i['Type']=='blocked' %}
+      <td><a href="unblock?id={{i['user_id']}}">UnBlock</a></td>
+      {% endif %}
+      <td><a href="view breports?id={{i['user_id']}}">View Reports</a></td>
+    </tr>
+    {% endfor %}
+  </table>
+</form>
+</body>
+</html>
